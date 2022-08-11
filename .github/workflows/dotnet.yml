@@ -34,6 +34,11 @@ jobs:
         cd Application/
         dotnet publish --configuration Release -p:ReadyToRun=true -p:SingleFile=true -p:Version=${{ steps.versionResponse.outputs.response }}
 
+    - name: debug
+      run: |
+        cd Application/WPF/bin/Release/net6.0-windows/publish/
+        ls
+
     - name: Create the Github Release
       uses: actions/create-release@v1
       id: create_release
