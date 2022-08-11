@@ -1,0 +1,26 @@
+name: Staging pipeline
+
+on:
+  push:
+    branches: [ "staging/*" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 6.0.x
+        
+    - name: Restore dependencies
+      run: | 
+        cd Application/
+        dotnet restore
+      
+    - name: Build
+      run: |
+        cd Application/
+        dotnet build --no-restore
