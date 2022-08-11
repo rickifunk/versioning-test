@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
 	<EnableWindowsTargeting>true</EnableWindowsTargeting>
-	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
   </PropertyGroup>
 
   <ItemGroup>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -34,8 +35,10 @@ namespace WPF
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            var text = File.ReadAllText("version.txt");
-            hashLabel.Content = text;
+            //var text = File.ReadAllText("version.txt");
+            //hashLabel.Content = text;
+
+            hashLabel.Content = Assembly.GetExecutingAssembly().GetName().Version.ToString();
         }
     }
 }
