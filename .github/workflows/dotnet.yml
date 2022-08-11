@@ -57,6 +57,6 @@ jobs:
         GITHUB_TOKEN: ${{ github.token }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: Application/bin/Release/net6.0-windows/publish/WPF.exe
+        asset_path: Application/bin/Release/net6.0-windows/publish/WPF
         asset_name: Application.exe
         asset_content_type: application/octet-stream
