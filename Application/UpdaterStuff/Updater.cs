@@ -9,7 +9,7 @@ namespace WPF.UpdaterStuff
 {
     internal class Updater
     {
-        const string UPDATER_EXE_PATH = @"C:\Users\Ricki\source\repos\SelfUpdatingWPF\Updater\bin\Debug\net6.0\Updater.exe";
+        const string UPDATER_EXE_PATH = @"C:\Users\Ricki\source\repos\versioning-test\Updater\bin\Debug\net6.0\Updater.exe";
 
         public static void Run()
         {

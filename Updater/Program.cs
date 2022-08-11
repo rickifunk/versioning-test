@@ -1,7 +1,7 @@
 ﻿using CommandLine;
 using System.Diagnostics;
 
-const string OUTPUT_PATH = @"C:\Users\Ricki\source\repos\SelfUpdatingWPF\Application\bin\Debug\net6.0-windows";
+const string OUTPUT_PATH = @"C:\Users\Ricki\source\repos\versioning-test\Application\bin\Debug\net6.0-windows";
 
 Parser.Default.ParseArguments<Options>(args)
     .WithParsed<Options>(o =>
