@@ -11,7 +11,7 @@ Parser.Default.ParseArguments<Options>(args)
 
         string hash = Guid.NewGuid().ToString();
         File.WriteAllText("version.txt", hash);
-
+         
         bool updated = false;
         while(!updated)
         {
