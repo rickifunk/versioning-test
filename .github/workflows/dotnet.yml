@@ -45,3 +45,13 @@ jobs:
         body: CHANGELOG
       env:
         GITHUB_TOKEN: ${{ github.token }}
+
+    - name: Upload [WIN-x64] to the release
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: Application/WPF/bin/Release/net6.0-windows/publish/WPF.exe
+        asset_name: Application.exe
+        asset_content_type: application/octet-stream
