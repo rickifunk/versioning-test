@@ -21,7 +21,7 @@ jobs:
     - uses: kzrnm/get-net-sdk-project-versions-action@v1
       id: get-version
       with:
-        proj-path: YourProject/YourProject.csproj
+        proj-path: Application/WPF.csproj
     - run: echo "${{steps.get-version.outputs.version}}"
     - run: echo "${{steps.get-version.outputs.version-prefix}}" 
     - run: echo "${{steps.get-version.outputs.version-suffix}}" 
@@ -44,7 +44,7 @@ jobs:
     - uses: kzrnm/get-net-sdk-project-versions-action@v1
       id: get-version2
       with:
-        proj-path: YourProject/YourProject.csproj
+        proj-path: Application/WPF.csproj
     - run: echo "${{steps.get-version.outputs.version}}"
     - run: echo "${{steps.get-version.outputs.version-prefix}}" 
     - run: echo "${{steps.get-version.outputs.version-suffix}}" 
