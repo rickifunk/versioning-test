@@ -32,4 +32,4 @@ jobs:
     - name: Publish [WIN-x64]
       run: |
         cd Application/
-        dotnet publish --configuration Release --runtime win-x64 --framework net6.0 --self-contained true -p:ReadyToRun=true -p:SingleFile=true -p:Version=${{ steps.versionResponse.outputs.response }}
+        dotnet publish --configuration Release --self-contained true -p:ReadyToRun=true -p:SingleFile=true -p:Version=${{ steps.versionResponse.outputs.response }}
