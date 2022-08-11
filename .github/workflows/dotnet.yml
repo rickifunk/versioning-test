@@ -33,3 +33,15 @@ jobs:
       run: |
         cd Application/
         dotnet publish --configuration Release -p:ReadyToRun=true -p:SingleFile=true -p:Version=${{ steps.versionResponse.outputs.response }}
+
+    - name: Create the Github Release
+      uses: actions/create-release@v1
+      id: create_release
+      with:
+        draft: false
+        prerelease: false
+        release_name: ${{ steps.versionResponse.outputs.response }}
+        tag_name: assets
+        body: CHANGELOG
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
