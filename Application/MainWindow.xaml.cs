@@ -38,7 +38,7 @@ namespace WPF
             //var text = File.ReadAllText("version.txt");
             //hashLabel.Content = text;
 
-            hashLabel.Content = $"Version: {Assembly.GetExecutingAssembly().GetName().Version.ToString()}";
+            hashLabel.Content = $"VERSION: {Assembly.GetExecutingAssembly().GetName().Version.ToString()}";
             updateLabel.Content = $"Update pending: {!Updater.IsUpdated()}";
         }
     }
