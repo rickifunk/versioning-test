@@ -3,8 +3,6 @@ name: .NET
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 
 jobs:
   build:
@@ -49,7 +47,7 @@ jobs:
         draft: false
         prerelease: false
         release_name: ${{ steps.versionResponse.outputs.response }}
-        tag_name: assets
+        tag_name: ${{ steps.versionResponse.outputs.response }}
         body: CHANGELOG
       env:
         GITHUB_TOKEN: ${{ github.token }}
