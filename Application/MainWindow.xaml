@@ -8,6 +8,7 @@
         Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
         <Label x:Name="hashLabel"/>
+        <Label x:Name="updateLabel" Margin="0 25 0 0"/>
         <Button Width="100" Height="50" Content="Click" Click="Button_Click"/>
     </Grid>
 </Window>
