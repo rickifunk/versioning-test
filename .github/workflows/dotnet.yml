@@ -35,7 +35,7 @@ jobs:
     - name: Publish [WIN-x64]
       run: |
         cd Application/
-        dotnet publish -p:Version=${{ steps.versionResponse.outputs.response }} --self-contained
+        dotnet publish -p:Version=${{ steps.versionResponse.outputs.response }} --self-contained -p:PublishSingleFile=true
 
     - name: Zip [WIN-X64]
       run: |
