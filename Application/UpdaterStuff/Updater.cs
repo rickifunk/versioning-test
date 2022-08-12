@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Reflection;
@@ -11,15 +12,13 @@ namespace WPF.UpdaterStuff
 {
     internal class Updater
     {
-        const string UPDATER_EXE_PATH = @"C:\Users\Ricki\source\repos\versioning-test\Updater\bin\Debug\net6.0\Updater.exe";
-
         public static void Run()
         {
             if (IsUpdated()) return;
 
             ProcessStartInfo psi = new ProcessStartInfo()
             {
-                FileName = UPDATER_EXE_PATH,
+                FileName = $"{Path.Combine(Directory.GetCurrentDirectory(), "Updater.exe")}",
                 Arguments = $"-p {Process.GetCurrentProcess().ProcessName}"
             };
 
