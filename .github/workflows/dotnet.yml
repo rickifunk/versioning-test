@@ -30,7 +30,7 @@ jobs:
     - name: Prepare tag name
       id: create_tag_name
       run: |
-        echo ::set-output name=TAG_NAME::$( ${{ steps.versionResponse.outputs.response }} | tr -d '"')
+        echo ::set-output name=TAG_NAME::$( echo ${{ steps.versionResponse.outputs.response }} | tr -d '"')
         
     - name: Install zip
       uses: montudor/action-zip@v1
