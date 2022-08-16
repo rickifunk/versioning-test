@@ -25,7 +25,7 @@ jobs:
         
     - name: Show Response
       run: |
-        echo ${{ steps.versionResponse.outputs.response }}
+        echo ${{ steps.versionResponse.outputs.response }} | tr -d '"'
         
     - name: Install zip
       uses: montudor/action-zip@v1
@@ -46,8 +46,8 @@ jobs:
       with:
         draft: false
         prerelease: false
-        release_name: ${{ steps.versionResponse.outputs.response }}
-        tag_name: ${{ steps.versionResponse.outputs.response }}
+        release_name: ${{ steps.versionResponse.outputs.response }} | tr -d '"'
+        tag_name: ${{ steps.versionResponse.outputs.response }} | tr -d '"'
         body: CHANGELOG
       env:
         GITHUB_TOKEN: ${{ github.token }}
