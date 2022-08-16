@@ -14,7 +14,7 @@ Parser.Default.ParseArguments<Options>(args)
         GithubReleaseService grs = new GithubReleaseService(new HttpClient());
         var release = grs.GetRelease("rickifunk/versioning-test").Result;
         if (release is null) throw new Exception();
-
+         
         var assets = grs.GetAssets(release.AssetsUrl).Result;
         var asset = grs.DownloadAsset(assets[0]).Result;
 
