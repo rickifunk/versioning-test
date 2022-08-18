@@ -11,49 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v2
-      with:
-        dotnet-version: 6.0.x
-        
-    - name: Restore dependencies
-      run: | 
-        cd Application/
-        dotnet restore
-      
-    - name: Build
+
+    - name: Sleep
       run: |
-        cd Application/
-        dotnet build --no-restore
-        
-    - name: Restore dependencies
-      run: | 
-        cd Application/
-        dotnet restore
-      
-    - name: Build
-      run: |
-        cd Application/
-        dotnet build --no-restore
-        
-    - name: Restore dependencies
-      run: | 
-        cd Application/
-        dotnet restore
-      
-    - name: Build
-      run: |
-        cd Application/
-        dotnet build --no-restore
-        
-        
-    - name: Restore dependencies
-      run: | 
-        cd Application/
-        dotnet restore
-      
-    - name: Build
-      run: |
-        cd Application/
-        dotnet build --no-restore
+        sleep 60
