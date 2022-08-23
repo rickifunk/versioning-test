@@ -14,8 +14,8 @@ jobs:
  
     - name: Prepare tag name
       id: create_tag_name
-      run: |
-        echo ::set-output name=TAG_NAME::$( echo "1" | tr -d '"')
+      run: echo "::set-output name=TAG_NAME::$( echo "1" | tr -d '"')"
+      shell: bash
 
 
     - name: Display 2
