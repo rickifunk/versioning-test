@@ -8,9 +8,14 @@ concurrency: test
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
  
-    - name: Display ref
-      run: echo ${{ github.ref }}
+    - name: Prepare tag name
+      id: create_tag_name
+      run: |
+        echo ::set-output name=TAG_NAME::$( echo "1" | tr -d '"')
+        
+    - name: Display tag
+      run: echo ${{ steps.create_tag_name.outputs }}
