@@ -17,5 +17,8 @@ jobs:
       run: |
         echo ::set-output name=TAG_NAME::$( echo "1" | tr -d '"')
         
-    - name: Display tag
-      run: echo ${{ steps.create_tag_name.outputs }}
+    - name: Display 1
+      run: echo ${{ steps.create_tag_name.outputs.name }}
+
+    - name: Display 2
+      run: echo ${{ steps.create_tag_name.outputs.TAG_NAME }}
