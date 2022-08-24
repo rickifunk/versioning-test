@@ -2,7 +2,7 @@ name: .NET
 
 on:
   push:
-    branches: [ "mainn" ]
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -16,53 +16,19 @@ jobs:
       with:
         dotnet-version: 6.0.x
         
-    - name: Fetch wallet version
-      id: versionResponse
-      uses: fjogeleit/http-request-action@v1
-      with:
-        url: 'http://85.218.136.241:5555/version'
-        method: 'GET'
-        
-    - name: Show Response
-      run: |
-        echo ${{ steps.versionResponse.outputs.response }} | tr -d '"'
-        
     - name: Prepare tag name
       id: create_tag_name
       run: |
-        echo ::set-output name=TAG_NAME::$( echo ${{ steps.versionResponse.outputs.response }} | tr -d '"')
+        echo ::set-output name=TAG_NAME::$( echo "1" | tr -d '"')
         
-    - name: Install zip
-      uses: montudor/action-zip@v1
-        
-    - name: Publish [WIN-x64]
-      run: |
-        cd Application/
-        dotnet publish -p:Version=${{ steps.versionResponse.outputs.response }} --self-contained -p:PublishSingleFile=true
-
-    - name: Zip [WIN-X64]
-      run: |
-        cd Application/bin/Debug/net6.0-windows/win-x64/
-        zip -qq -r application.zip publish
-
     - name: Create the Github Release
       uses: actions/create-release@v1
       id: create_release
       with:
         draft: false
         prerelease: false
-        release_name: ${{ steps.create_tag_name.outputs.TAG_NAME }}
-        tag_name: ${{ steps.create_tag_name.outputs.TAG_NAME }}
+        release_name: v${{ steps.create_tag_name.outputs.TAG_NAME }}
+        tag_name: v${{ steps.create_tag_name.outputs.TAG_NAME }}
         body: CHANGELOG
       env:
         GITHUB_TOKEN: ${{ github.token }}
-
-    - name: Upload [WIN-x64] to the release
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: Application/bin/Debug/net6.0-windows/win-x64/application.zip
-        asset_name: Application.zip
-        asset_content_type: application/zip
