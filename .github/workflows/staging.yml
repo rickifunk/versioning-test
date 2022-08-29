@@ -1,22 +1,21 @@
 name: staging 
 
 on:
-  push:
+  pull_request:
+    types: [closed]
     branches: [ "staging" ]
 
-concurrency: test
-
 jobs:
-  build:
-    runs-on: windows-latest
-
+  check:
+    runs-on: ubuntu-latest
     steps:
- 
-    - name: Prepare tag name
-      id: create_tag_name
-      run: echo "::set-output name=TAG_NAME::$( echo "1" | tr -d '"')"
-      shell: bash
+    - name: Check
+      run: exit(0)
+      if: github.event.pull_request.merged == false
 
-
-    - name: Display 2
-      run: echo ${{ steps.create_tag_name.outputs.TAG_NAME }}
+  build:
+    needs: check
+    runs-on: ubuntu-latest
+    steps:
+    - name: Doing work
+      run: echo "Doing the work"
