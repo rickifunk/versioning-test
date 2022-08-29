@@ -6,16 +6,9 @@ on:
     branches: [ "staging" ]
 
 jobs:
-  check:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Check
-      run: exit 0
-      if: github.event.pull_request.merged == false
-
   build:
-    needs: check
     runs-on: ubuntu-latest
     steps:
     - name: Doing work
       run: echo "Doing the work"
+      if: github.event.pull_request.merged == true
