@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Check
-      run: exit(0)
+      run: exit(1)
       if: github.event.pull_request.merged == false
 
   build:
