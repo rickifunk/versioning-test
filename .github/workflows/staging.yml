@@ -9,6 +9,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - name: Display ref
+      run: echo ${GITHUB_REF##*/}
+    
     - name: Doing work
       run: echo "Doing the work"
-      if: github.event.pull_request.merged == true
+      if: ${{ github.event.pull_request.merged == true }} 
