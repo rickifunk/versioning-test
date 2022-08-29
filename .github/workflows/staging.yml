@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Display ref
-      run: echo ${GITHUB_REF##*/}
+      run: echo ${GITHUB_BASE_REF}
     
     - name: Doing work
       run: echo "Doing the work"
