@@ -19,9 +19,20 @@ jobs:
        else
           echo "::set-output name=IS_PATCH::$(echo false)"
        fi
-    
-    - name: Doing work
-      run: | 
-        echo ${{ steps.set_ref.outputs.IS_PATCH }}
-        echo ${{ github.event.pull_request.merged }}
+       
+       if [ "$ref_short" == "feature" ]; then
+          echo "::set-output name=IS_FEATURE::$(echo true)"
+       else
+          echo "::set-output name=IS_FEATURE::$(echo false)"
+       fi
       if: ${{ github.event.pull_request.merged == true }} 
+    
+    - name: Patch work
+      run: | 
+        echo "Doing the patch work"
+      if: ${{ github.event.pull_request.merged == true && steps.set_ref.outputs.IS_PATCH == true }} 
+
+    - name: Feature work
+      run: | 
+        echo "Doing the feature work"
+      if: ${{ github.event.pull_request.merged == true && steps.set_ref.outputs.IS_FEATURE == true }} 
