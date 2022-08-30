@@ -30,9 +30,9 @@ jobs:
     - name: Patch work
       run: | 
         echo "Doing the patch work"
-      if: ${{ github.event.pull_request.merged == true && steps.set_ref.outputs.IS_PATCH == "true" }} 
+      if: ${{ github.event.pull_request.merged == true && contains(steps.set_ref.outputs.IS_PATCH, 'true') }} 
 
     - name: Feature work
       run: | 
         echo "Doing the feature work"
-      if: ${{ github.event.pull_request.merged == true && steps.set_ref.outputs.IS_FEATURE == "true" }} 
+      if: ${{ github.event.pull_request.merged == true && contains(steps.set_ref.outputs.IS_FEATURE, 'true') }} 
