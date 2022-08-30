@@ -13,10 +13,11 @@ jobs:
       id: set_ref
       run: |
        ref="${{ github.head_ref }}"
-       echo ${ref%%/*}
-       echo ${{ github.head_ref }}
-       
+       ref_short=${ref%%/*}
+       if [ "$ref_short" == "patch" ]; then
+          echo "::set-output name=IS_PATCH::$(echo true)"
+       fi
     
     - name: Doing work
-      run: echo "Doing the work"
+      run: echo ${{ steps.set_ref.outputs.IS_PATCH }}
       if: ${{ github.event.pull_request.merged == true }} 
