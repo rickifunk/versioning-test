@@ -12,8 +12,8 @@ jobs:
     - name: Display ref
       id: set_ref
       run: |
-       ref="${ ${{ github.head_ref }} %%/*}"
-       echo ${ref}
+       ref="${{ github.head_ref }}"
+       echo ${ref%%/*}
        echo ${{ github.head_ref }}
        
     
