@@ -20,3 +20,8 @@ jobs:
 
     - name: echo3
       run: echo ${{ github.event.pull_request.merged }}
+
+
+    - name: Echo on push, no pull request
+      run: echo "yes"
+      if: ${{ github.event.pull_request == 'unassigned' }}
