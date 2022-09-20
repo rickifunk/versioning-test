@@ -1,0 +1,22 @@
+name: .NET
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    types: [closed]
+    branches: [ "dddd" ]
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps: 
+    
+    - name: echo1
+      echo: ${{ github.event }}
+      
+    - name: echo2
+      echo: ${{ github.event.pull_request }}
+
+    - name: echo3
+      echo: ${{ github.event.pull_request.merged }}
