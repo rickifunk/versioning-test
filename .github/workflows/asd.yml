@@ -25,3 +25,7 @@ jobs:
     - name: Echo on push, no pull request
       run: echo "yes"
       if: ${{ github.event.pull_request == '' }}
+      
+    - name: Echo on pull request closed
+      run: echo "yes"
+      if: ${{ github.event.pull_request.merged == true }}
