@@ -24,4 +24,4 @@ jobs:
 
     - name: Echo on push, no pull request
       run: echo "yes"
-      if: ${{ github.event.pull_request == 'unassigned' }}
+      if: ${{ github.event.pull_request == '' }}
