@@ -20,7 +20,7 @@ jobs:
       run: cat Application/WPF.csproj
       
     - name: Edit version in csproj
-      run: sed -i -e '/^<Version>/s/^.*$/<Version>1.0.2<\/Version>/' Application/WPF.csproj
+      run: sed -i 's/<Version>.*<\/Version>/<Version>1.0.3<\/Version>/g' Application/WPF.csproj
   
     - name: Echo version
       run: cat Application/WPF.csproj
