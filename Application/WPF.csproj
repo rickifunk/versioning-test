@@ -8,6 +8,7 @@
     <UseWPF>true</UseWPF>
 	<EnableWindowsTargeting>true</EnableWindowsTargeting>
 	<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+	<Version>1.0.1</Version>
 	  
 	<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
   </PropertyGroup>
