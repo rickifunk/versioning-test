@@ -25,3 +25,8 @@ jobs:
     - name: Echo version
       run: cat Application/WPF.csproj
       
+    - name: Push it
+      run: |
+        git add Application/WPF.csproj
+        git commit -m "Edited version in WPF.csproj"
+        git push
