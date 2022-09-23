@@ -2,7 +2,7 @@ name: .NET
 
 on:
   push:
-    branches: [ "mainn" ]
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -16,19 +16,5 @@ jobs:
       with:
         dotnet-version: 6.0.x
         
-    - name: Prepare tag name
-      id: create_tag_name
-      run: |
-        echo ::set-output name=TAG_NAME::$( echo "1" | tr -d '"')
-        
-    - name: Create the Github Release
-      uses: actions/create-release@v1
-      id: create_release
-      with:
-        draft: false
-        prerelease: false
-        release_name: v${{ steps.create_tag_name.outputs.TAG_NAME }}
-        tag_name: v${{ steps.create_tag_name.outputs.TAG_NAME }}
-        body: CHANGELOG
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
+    - name: Echo version
+      run: cat Application/WPF.csproj
