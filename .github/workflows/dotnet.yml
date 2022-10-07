@@ -15,12 +15,19 @@ jobs:
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: 6.0.x
+    
+    - name: Fetch version
+      id: versionResponse
+      uses: fjogeleit/http-request-action@v1
+      with:
+        url: 'https://releases.discreet.net/versions/wallet'
+        method: 'GET'
         
     - name: Echo version
       run: cat Application/WPF.csproj
       
     - name: Edit version in csproj
-      run: sed -i 's/<Version>.*<\/Version>/<Version>1.0.3<\/Version>/g' Application/WPF.csproj
+      run: sed -i 's/<Version>.*<\/Version>/<Version>${{ steps.versionResponse.outputs.response }}<\/Version>/g' Application/WPF.csproj
   
     - name: Echo version
       run: cat Application/WPF.csproj
