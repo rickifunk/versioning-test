@@ -26,8 +26,13 @@ jobs:
     - name: Echo version
       run: cat Application/WPF.csproj
       
+    - name: Prepare versions string
+      id: version_string
+      run: echo "::set-output name=TAG_NAME::$( echo ${{ steps.versionResponse.outputs.response }} | tr -d '"')"
+      shell: bash
+      
     - name: Edit version in csproj
-      run: sed -i 's/<Version>.*<\/Version>/<Version>${{ steps.versionResponse.outputs.response }}<\/Version>/g' Application/WPF.csproj
+      run: sed -i 's/<Version>.*<\/Version>/<Version>${{ steps.version_string.outputs.TAG_NAME }}<\/Version>/g' Application/WPF.csproj
   
     - name: Echo version
       run: cat Application/WPF.csproj
